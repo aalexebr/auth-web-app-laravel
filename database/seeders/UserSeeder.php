@@ -28,10 +28,10 @@ class UserSeeder extends Seeder
                 'role'=> 1
             ],
             [
-                'name' => 'Crina',
-                'email' => 'crina@a.a',
+                'name' => 'Mich',
+                'email' => 'mich@a.a',
                 'password' => 'password',
-                'role'=> 0
+                'role'=> 1
             ],
         ];
 
