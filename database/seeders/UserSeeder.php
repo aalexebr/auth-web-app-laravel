@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 // Models
 use App\Models\User;
+use App\Models\Admin\Profession;
 
 // Helpers
 use Illuminate\Support\Facades\Hash;
@@ -35,6 +36,20 @@ class UserSeeder extends Seeder
                 'password' => 'password',
                 'role'=> 1
             ],
+            [
+                'name' => 'Eros',
+                'surname'=>'checojoni',
+                'email' => 'eros@a.a',
+                'password' => 'password',
+                'role'=> 0
+            ],
+            [
+                'name' => 'Dario',
+                'surname'=>'checojoni',
+                'email' => 'dario@a.a',
+                'password' => 'password',
+                'role'=> 0
+            ],
         ];
 
 
@@ -52,6 +67,8 @@ class UserSeeder extends Seeder
                 'is_admin'=> $user['role']
             ]);
         }
+
+        
     }
     
 }

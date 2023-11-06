@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('admin_infos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
-            $table->text('resume');
-            $table->text('picture');
-            $table->text('descrition');
-            $table->string('address',128);
+            $table->text('resume')->nullable();
+            $table->text('picture')->nullable();
+            $table->text('description')->nullable();
+            $table->string('address',128)->nullable();
             $table->timestamps();
 
             $table->foreign('admin_id')

@@ -71,31 +71,43 @@ class User extends Authenticatable implements JWTSubject
     // RELATIONSHIPS
 
     public function adminInfo(){
-        return $this->hasOne(AdminInfo::class);
+        return $this->hasOne(AdminInfo::class, 'admin_id');
     }
 
     public function settings(){
-        return $this->hasMany(Setting::class);
+        return $this->hasMany(Setting::class, 'admin_id');
     }
 
     public function holidays(){
-        return $this->hasMany(Holiday::class);
+        return $this->hasMany(Holiday::class, 'admin_id');
     }
 
     public function services(){
-        return $this->hasMany(Service::class);
+        return $this->hasMany(Service::class, 'admin_id');
     }
 
     public function professions(){
-        return $this->belongsToMany(Profession::class);
+        return $this->belongsToMany(Profession::class,'profession_user',  'admin_id','profession_id');
     }
 
-    public function appointments(){
-        return $this->hasMany(Appointment::class);
+    public function adminAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'admin_id');
     }
 
-    public function messages(){
-        return $this->hasMany(Message::class);
+    public function guestAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'guest_id');
+    }
+
+    public function adminMessages()
+    {
+        return $this->hasMany(Message::class, 'admin_id');
+    }
+
+    public function guestMessages()
+    {
+        return $this->hasMany(Message::class, 'guest_id');
     }
 
     public function templates(){

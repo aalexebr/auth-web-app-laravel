@@ -8,6 +8,7 @@ use App\Models\Admin\Profession;
 
 // facades
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 class ProfessionSeeder extends Seeder
 {
@@ -30,6 +31,17 @@ class ProfessionSeeder extends Seeder
             Profession::create([
                 'name' => $profession,
             ]);
+        }
+
+        // seeder profession
+        $admins = User::where('is_admin',1)->get();
+        $professions = Profession::all();
+        foreach ($admins as $admin){
+            $randProfession = $professions->random(rand(1, 3))->pluck('id')->toArray();
+            // dd($admin->professions);
+            
+            $admin->professions()->sync($randProfession);
+
         }
     }
 }
