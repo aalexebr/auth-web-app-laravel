@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             ProfessionSeeder::class,
-            DaySeeder::class
+            DaySeeder::class,
+            AdminInfoSeeder::class,
+            AppointmentSeeder::class,
+            MessageSeeder::class
         ]);
     }
 }

@@ -20,7 +20,7 @@ class MessageTemplate extends Model
     protected $table = 'message_templates';
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'admin_id');
     }
     public function service(){
         return $this->belongsTo(Service::class);

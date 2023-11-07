@@ -19,6 +19,6 @@ class AdminInfo extends Model
 
     // rel
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'admin_id');
     }
 }
