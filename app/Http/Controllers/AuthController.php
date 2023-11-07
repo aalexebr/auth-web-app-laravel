@@ -56,7 +56,12 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $user1 = auth()->user();
+        $user = User::with('adminInfo','professions','adminAppointments','adminMessages')->findOrFail($user1->id);
+        // $user  = $user1->adminInfo;
+        return response()->json([
+            'user'=> $user
+        ],200);
     }
 
     public function checkAuth(){

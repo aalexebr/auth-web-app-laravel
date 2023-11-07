@@ -35,12 +35,17 @@ class ProfessionSeeder extends Seeder
 
         // seeder profession
         $admins = User::where('is_admin',1)->get();
-        $professions = Profession::all();
+
         foreach ($admins as $admin){
-            $randProfession = $professions->random(rand(1, 3))->pluck('id')->toArray();
-            // dd($admin->professions);
+            $profs= Profession::all();
+            $prof_id = [];
+            foreach($profs as $prof){
+                $prof_id[]= $prof->id;
+            }
+            $key = array_rand($prof_id);
             
-            $admin->professions()->sync($randProfession);
+            
+            $admin->professions()->sync($prof_id[$key]);
 
         }
     }
