@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->unsignedTinyInteger('time_slot');
+            $table->time('appointment_time');
+            $table->float('time_slot',3,2);
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('guest_id');
             $table->timestamps();

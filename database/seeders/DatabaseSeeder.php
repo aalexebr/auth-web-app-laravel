@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ProfessionSeeder::class,
             DaySeeder::class,
-            AdminInfoSeeder::class
+            AdminInfoSeeder::class,
+            AppointmentSeeder::class,
+            MessageSeeder::class
         ]);
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('time_slot');
+            $table->float('time_slot',3,2);
             $table->time('start_time');
             $table->time('end_time');
             $table->time('break_start')->nullable();

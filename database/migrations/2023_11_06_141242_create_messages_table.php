@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('guest_id');
+            $table->text('message');
             $table->unsignedBigInteger('appointment_id')->nullable();
             $table->timestamps();
 
