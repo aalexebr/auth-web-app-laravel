@@ -3,8 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\AdminController;
+
 use App\Http\Controllers\Guest\GuestController;
+// admin
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +36,8 @@ Route::group(['middleware'=>['auth:api']],function(){
 
 // middleware for amdin role
 Route::group(['middleware'=>['auth:api','is_admin']],function(){
-    Route::get('user',[AuthController::class,'me']);
-    
+    Route::get('x',[AuthController::class,'me']);
+    Route::get('user',[AdminController::class,'getAdmin']);
+    Route::get('appointments',[AppointmentController::class,'appointments']);
+    Route::get('messages',[MessageController::class,'messages']);
 });

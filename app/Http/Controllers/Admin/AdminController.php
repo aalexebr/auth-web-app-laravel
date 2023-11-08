@@ -45,4 +45,20 @@ class AdminController extends Controller
         ],405);
 
     }
+
+    public function getAdmin()
+    {
+        $user1 = auth()->user();
+        $user = User::with('adminInfo','professions')->findOrFail($user1->id);
+        
+        if($user){
+            return response()->json([
+                'user'=> $user
+                ],200);  
+        }
+        return response()->json([
+            'message'=> 'user not found'
+            ],404);
+        
+    }
 }
