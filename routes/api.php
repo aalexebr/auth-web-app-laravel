@@ -36,6 +36,7 @@ Route::group(['middleware'=>['auth:api']],function(){
     Route::post('logout',[AuthController::class,'logout']);
 
     // guest
+    Route::get('user',[GuestController::class,'getGuest']);
     Route::get('appointments',[GuestAppointmentController::class,'appointments']);
     Route::get('messages',[GuestMessageController::class,'messages']);
 });
@@ -43,7 +44,7 @@ Route::group(['middleware'=>['auth:api']],function(){
 // middleware for amdin role
 Route::group(['middleware'=>['auth:api','is_admin']],function(){
     // Route::get('x',[AuthController::class,'me']);
-    Route::get('user',[AdminController::class,'getAdmin']);
+    Route::get('admin/user',[AdminController::class,'getAdmin']);
     Route::get('admin/appointments',[AdminAppointmentController::class,'appointments']);
     Route::get('admin/messages',[AdminMessageController::class,'messages']);
 });
