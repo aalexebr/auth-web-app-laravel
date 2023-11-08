@@ -3,12 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+// guest
 use App\Http\Controllers\Guest\GuestController;
+use App\Http\Controllers\Guest\AppointmentController as GuestAppointmentController;
+use App\Http\Controllers\Guest\MessageController as GuestMessageController;
 // admin
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AppointmentController;
-use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\AppointmentController as AdminAppointmentController;
+use App\Http\Controllers\Admin\MessageController as AdminMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +34,16 @@ Route::group(['middleware'=>['auth:api']],function(){
     Route::post('auth',[AuthController::class,'checkAuth']);
     Route::post('refresh',[AuthController::class,'refresh']);
     Route::post('logout',[AuthController::class,'logout']);
+
+    // guest
+    Route::get('appointments',[GuestAppointmentController::class,'appointments']);
+    Route::get('messages',[GuestMessageController::class,'messages']);
 });
 
 // middleware for amdin role
 Route::group(['middleware'=>['auth:api','is_admin']],function(){
-    Route::get('x',[AuthController::class,'me']);
+    // Route::get('x',[AuthController::class,'me']);
     Route::get('user',[AdminController::class,'getAdmin']);
-    Route::get('appointments',[AppointmentController::class,'appointments']);
-    Route::get('messages',[MessageController::class,'messages']);
+    Route::get('admin/appointments',[AdminAppointmentController::class,'appointments']);
+    Route::get('admin/messages',[AdminMessageController::class,'messages']);
 });
