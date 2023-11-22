@@ -26,7 +26,7 @@ use App\Http\Controllers\Admin\MessageController as AdminMessageController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::post('register-as-admin',[AdminController::class,'registerAdmin']);
+Route::post('admin/register',[AdminController::class,'registerAdmin']);
 Route::post('register',[GuestController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::group(['middleware'=>['auth:api']],function(){
@@ -47,4 +47,5 @@ Route::group(['middleware'=>['auth:api','is_admin']],function(){
     Route::get('admin/user',[AdminController::class,'getAdmin']);
     Route::get('admin/appointments',[AdminAppointmentController::class,'appointments']);
     Route::get('admin/messages',[AdminMessageController::class,'messages']);
+    Route::post('admin/edit-profile',[AdminController::class,'editAdmin']);
 });
