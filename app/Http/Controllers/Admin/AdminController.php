@@ -74,14 +74,14 @@ class AdminController extends Controller
         $formData = $request->all();
 
         $phone = null;
-        if(isset($formData['phone'])){
-            $phone = $formData['phone'];
+        if(isset($formData['phone_number'])){
+            $phone = $formData['phone_number'];
         }
 
         $user->update([
             'name' => $formData['name'],
             'surname' => $formData['surname'],
-            'phone' => $phone,
+            'phone_number' => $phone,
         ]);
 
         // PROFESSION
@@ -120,7 +120,7 @@ class AdminController extends Controller
       
         if($user && $adminInfo){
            return response()->json([
-                "message"=> "success"
+                "message"=> "Modificato con successo"
             ],200); 
         }
         return response()->json([

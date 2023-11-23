@@ -26,7 +26,7 @@ class UpdateAdminRequest extends FormRequest
         return [
             "name"=>"required",
             "surname"=>"required",
-            'phone'=>'nullable',
+            'phone_number'=>'nullable',
             "description"=>"nullable",
             "address"=>"nullable",
             'resume'=>'nullable',
