@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();
-            $table->unsignedBigInteger('phone_number')->nullable();
+            $table->string('phone_number')->nullable();
             $table->boolean('is_admin');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
