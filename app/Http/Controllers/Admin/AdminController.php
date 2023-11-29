@@ -73,15 +73,15 @@ class AdminController extends Controller
         $user = User::with('adminInfo')->findOrFail($user1->id);
         $formData = $request->all();
 
-        $phone = null;
-        if(isset($formData['phone_number'])){
-            $phone = $formData['phone_number'];
-        }
+        // $phone = null;
+        // if(isset($formData['phone_number'])){
+        //     $phone = $formData['phone_number'];
+        // }
 
         $user->update([
             'name' => $formData['name'],
             'surname' => $formData['surname'],
-            'phone_number' => $phone,
+            'phone_number' => $formData['phone_number'],
         ]);
 
         // PROFESSION
@@ -93,39 +93,40 @@ class AdminController extends Controller
 
         $adminInfo = AdminInfo::where('admin_id',$user->id)->firstOrFail();
 
-        $resume =null;
-        $picture = null;
-        $description=null;
-        $address=null;
+        // $resume =null;
+        // $picture = null;
+        // $description=null;
+        // $address=null;
 
-        if(isset($formData['resume'])){
-            $resume = $formData['resume'];
-        }
-        if(isset($formData['picture'])){
-            $picture = $formData['picture'];
-        }
-        if(isset($formData['description'])){
-            $description = $formData['description'];
-        }
-        if(isset($formData['address'])){
-            $address = $formData['address'];
-        }
+        // if(isset($formData['resume'])){
+        //     $resume = $formData['resume'];
+        // }
+        // if(isset($formData['picture'])){
+        //     $picture = $formData['picture'];
+        // }
+        // if(isset($formData['description'])){
+        //     $description = $formData['description'];
+        // }
+        // if(isset($formData['address'])){
+        //     $address = $formData['address'];
+        // }
 
         $adminInfo->update([
-            'resume'=>$resume ,
-            'picture'=>$picture,
-            'description'=>$description,
-            'address'=>$address,
+            'resume'=>$formData['resume'],
+            'picture'=>$formData['picture'],
+            'description'=>$formData['description'],
+            'address'=> $formData['address'],
         ]);
       
-        if($user && $adminInfo){
-           return response()->json([
-                "message"=> "Modificato con successo"
-            ],200); 
-        }
+    
         return response()->json([
-            'message'=>'fail',
-        ],405);
+            "message"=> "Modificato con successo",
+            'data' => $formData
+        ],200); 
+        
+        // return response()->json([
+        //     'message'=>'fail',
+        // ],405);
         
     }
 }
