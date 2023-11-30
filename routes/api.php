@@ -48,4 +48,6 @@ Route::group(['middleware'=>['auth:api','is_admin']],function(){
     Route::get('admin/appointments',[AdminAppointmentController::class,'appointments']);
     Route::get('admin/messages',[AdminMessageController::class,'messages']);
     Route::post('admin/edit-profile',[AdminController::class,'editAdmin']);
+    Route::post('admin/x',[AdminController::class,'x']);
+    Route::post('admin/profile-pic',[AdminController::class,'adminProfilePic']);
 });

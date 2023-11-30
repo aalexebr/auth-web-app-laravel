@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 // helpers
 use Illuminate\Support\Facades\Auth;
 
-class UpdateAdminRequest extends FormRequest
+class AdminProfilePicRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,7 @@ class UpdateAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>"nullable",
-            "surname"=>"nullable",
-            'phone_number'=>'nullable',
-            "description"=>"nullable",
-            "address"=>"nullable",
-            'resume'=>'nullable',
-            'picture'=>'nullable',
-            'profession'=>'nullable|exists:professions,id'
+            "file"=>"nullable"
         ];
     }
 }
