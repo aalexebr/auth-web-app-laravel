@@ -177,8 +177,13 @@ class AdminController extends Controller
             ],200); 
         }
         return response()->json([
-            'message'=>'fail',
-        ],405);
+            "message"=> "Modificato con successo",
+            'data' => $formData
+        ],200); 
+        
+        // return response()->json([
+        //     'message'=>'fail',
+        // ],405);
         
     }
 
@@ -271,4 +276,6 @@ class AdminController extends Controller
 
         
     }
+
+    
 }
