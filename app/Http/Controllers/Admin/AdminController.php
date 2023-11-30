@@ -222,6 +222,9 @@ class AdminController extends Controller
         if($request->file('file')){
             $file = $request->file('file');
             $profilePic = Storage::put('admin_profile',$file);
+            if($adminInfo->picture != null){
+                Storage::delete($adminInfo->picture);
+            }
         }
         else{
             $profilePic = $adminInfo->picture;
@@ -235,10 +238,10 @@ class AdminController extends Controller
             return response()->json([
                     'success'=>true,
                     'message'=> 'successful file upload',
-                    'file'=>$profilePic
                 ],200);
         }
         return response()->json([
+            'succes'=>false,
             'message'=>'failed upload',
         ],405);  
         
