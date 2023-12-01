@@ -118,8 +118,8 @@ class AdminController extends Controller
         }
 
         $user->update([
-            'name' => $name,
-            'surname' => $surname,
+            'name' => ucwords(strtolower($name)),
+            'surname' => ucwords(strtolower($surname)),
             'phone_number' => $phone,
         ]);
 
